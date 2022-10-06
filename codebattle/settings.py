@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-3l*_pm9b&etcz$l$am+o$ijt6$()++w*285rgdc=g$jjf%8p4%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://codebattle.up.railway.app', 'codebattle.up.railway.app']
+ALLOWED_HOSTS = ['https://codebattle.up.railway.app', 'codebattle.up.railway.app', '127.0.0.1']
 
 AUTH_USER_MODEL = 'base.User'
 # Application definition
@@ -94,11 +94,11 @@ WSGI_APPLICATION = 'codebattle.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('PG_DATABASE'),
-        'USER':os.environ.get('PG_USER'),
-        'PASSWORD':os.environ.get('PG_PASSWORD'),
-        'HOST':os.environ.get('PG_HOST'),
-        'PORT':os.environ.get('PG_PORT')
+        'NAME': os.environ.get('PGDATABASE'),
+        'USER':os.environ.get('PGUSER'),
+        'PASSWORD':os.environ.get('PGPASSWORD'),
+        'HOST':os.environ.get('PGHOST'),
+        'PORT':os.environ.get('PGPORT')
     }
 }
 
