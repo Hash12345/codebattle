@@ -29,9 +29,8 @@ load_dotenv()
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = str(os.environ.get('DEBUG')) == "1"
+DEBUG = True#str(os.environ.get('DEBUG')) == "1"
 
-print('DEBUG:', DEBUG)
 
 ALLOWED_HOSTS = ['https://codebattle.up.railway.app', 'codebattle.up.railway.app', '127.0.0.1', 'localhost']
 
@@ -164,7 +163,7 @@ CSRF_TRUSTED_ORIGINS = [
     'https://codebattle.up.railway.app',
 ]
 
-#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_QUERYSTRING_AUTH = False
 
 
