@@ -89,7 +89,6 @@ WSGI_APPLICATION = 'codebattle.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-from secrets import PG_DATABASE, PG_HOST, PG_PASSWORD, PG_USER, PG_PORT
 
 
 DATABASES = {
@@ -167,4 +166,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CSRF_TRUSTED_ORIGINS = [
     'https://web-production-3c6f.up.railway.app',
     'https://codebattle.up.railway.app',
+    'codebattle.up.railway.app',
 ]
