@@ -13,6 +13,7 @@ urlpatterns = [
     path('registration-confirmation/<str:pk>/', views.registration_confirmation, name="registration-confirmation"),
 
     path('account/', views.account_page, name="account"),
+    path('edit-account/', views.edit_account, name="edit-account"),
     path('project-submission/<str:pk>/', views.project_submission, name="project-submission"),
 
     path('update-submission/<str:pk>/', views.update_submission, name="update-submission"),

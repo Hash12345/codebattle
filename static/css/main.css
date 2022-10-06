@@ -25,6 +25,7 @@
     display: block;
     width: fit-content;
     margin: 10px;
+    border:none;
 }
 
 .btn--warning{
