@@ -6,6 +6,7 @@ from .forms import SubmissionForm, CustomUserCreateForm, UserForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
+from PIL import Image
 # Create your views here.
 
 def login_page(request):
@@ -69,6 +70,16 @@ def user_page(request, pk):
 @login_required(login_url='/login')
 def account_page(request):
     user = request.user
+
+    # img = user.avatar
+    # img = Image.open(user.avatar)
+    # newsize = (10, 10)
+    # img = img.resize(newsize)
+  
+    # user.avatar = img
+    # user.save()
+    # user.save()
+
     context = {'user':user}
     return render(request, 'account.html', context)
 
@@ -77,9 +88,25 @@ def edit_account(request):
     form = UserForm(instance=request.user)
 
     if request.method == 'POST':
-        form = UserForm(request.POST, request.FILES, instance=request.user)
+        #print('ORIGINAL Image', request.FILES.get('avatar'))
+        # img = Image.open(request.FILES.get('avatar'))
+        # newsize = (10, 10)
+        # img = img.resize(newsize)
+        # request.FILES['avatar'] = img
+        # img = Image.open(user.avatar)
+        # newsize = (10, 10)
+        # img = img.resize(newsize)
+        #print('NEW Image', request.FILES.get('avatar'))
+        form = UserForm(request.POST, request.FILES,  instance=request.user)
         if form.is_valid():
-            form.save()
+            user = form.save(commit=False)
+            user.save()
+
+            img = Image.open(user.avatar)
+            newsize = (10, 10)
+            img = img.resize(newsize)
+            print('img:', dir(img))
+            
             return redirect('account')
 
     context = {'form':form}

@@ -2,6 +2,7 @@ from email.policy import default
 from django.db import models
 import uuid
 from django.contrib.auth.models import AbstractUser
+from django_resized import ResizedImageField
 # Create your models here.
 
 class User(AbstractUser):
@@ -10,7 +11,7 @@ class User(AbstractUser):
     bio = models.TextField(null=True, blank=True)
     hackathon_participant = models.BooleanField(default=True, null=True)
 
-    avatar = models.ImageField(default='avatar.png')
+    avatar = ResizedImageField(size=[300,300], default='avatar.png')
 
     id = models.UUIDField(default=uuid.uuid4, unique=True,
                           primary_key=True, editable=False)
