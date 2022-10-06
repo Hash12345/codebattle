@@ -26,9 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-3l*_pm9b&etcz$l$am+o$ijt6$()++w*285rgdc=g$jjf%8p4%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['https://codebattle.up.railway.app']
+ALLOWED_HOSTS = ['https://codebattle.up.railway.app', 'codebattle.up.railway.app']
 
 AUTH_USER_MODEL = 'base.User'
 # Application definition
