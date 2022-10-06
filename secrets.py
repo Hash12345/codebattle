@@ -1,0 +1,5 @@
+PG_DATABASE="railway"
+PG_HOST="containers-us-west-72.railway.app"
+PG_PASSWORD="rf65qhO7y9n94BeVHTsz"
+PG_PORT="6505"
+PG_USER="postgres"
