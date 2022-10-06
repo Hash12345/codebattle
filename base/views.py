@@ -6,6 +6,7 @@ from .forms import SubmissionForm, CustomUserCreateForm, UserForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
+from django.contrib.auth.hashers import make_password
 from PIL import Image
 # Create your views here.
 
@@ -83,6 +84,7 @@ def account_page(request):
     context = {'user':user}
     return render(request, 'account.html', context)
 
+@login_required(login_url='/login')
 def edit_account(request):
     
     form = UserForm(instance=request.user)
@@ -101,16 +103,24 @@ def edit_account(request):
         if form.is_valid():
             user = form.save(commit=False)
             user.save()
-
-            img = Image.open(user.avatar)
-            newsize = (10, 10)
-            img = img.resize(newsize)
-            print('img:', dir(img))
-            
             return redirect('account')
 
     context = {'form':form}
     return render(request, 'user_form.html', context)
+
+@login_required(login_url='/login')
+def change_password(request):   
+    if request.method == 'POST':
+        password1 = request.POST.get('password1')
+        password2 = request.POST.get('password2')
+       
+        if password1 == password2:
+             new_pass = make_password(password1)
+             request.user.password = new_pass
+             request.user.save()
+             return redirect('account')
+
+    return render(request, 'change_password.html')
 
 def event_page(request, pk):
     event = Event.objects.get(id=pk)
